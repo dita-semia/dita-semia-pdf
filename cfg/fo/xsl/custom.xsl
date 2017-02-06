@@ -7,7 +7,6 @@
 	<xsl:import href="plugin:org.dita-semia.resolver:xsl/fo/dl-attr.xsl"/>
 	<xsl:import href="plugin:org.dita-semia.resolver:xsl/fo/dl-outputclasses.xsl"/>
 	<xsl:import href="plugin:org.dita-semia.resolver:xsl/fo/advanced-keyref.xsl"/>
-	<xsl:import href="plugin:org.dita-semia.resolver:xsl/fo/remove-outer-space.xsl"/>
 
 	<xsl:include href="embedded-svg.xsl"/>
 	
