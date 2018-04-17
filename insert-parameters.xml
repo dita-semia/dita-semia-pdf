@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dummy>
+	<param name="ditaval" 						expression="${dita.input.valfile}" 				if="dita.input.valfile"/>
 	<param name="highlight.conbat.bk-col" 		expression="${highlight.conbat.bk-col}" 		if="highlight.conbat.bk-col"/>
 	<param name="highlight.xslt-conref.bk-col" 	expression="${highlight.xslt-conref.bk-col}"	if="highlight.xslt-conref.bk-col"/>
+	<param name="dita-semia.double-page-layout" expression="${dita-semia.double-page-layout}" 	if="dita-semia.double-page-layout"/>
 </dummy>

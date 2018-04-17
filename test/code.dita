@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topic xmlns:cba="http://www.dita-semia.org/conbat" xmlns:xcr="http://www.dita-semia.org/xslt-conref" xmlns:ikd="http://www.dita-semia.org/implicit-keydef"
+	xmlns:akr="http://www.dita-semia.org/advanced-keyref" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd" id="x3z_5m2_sbz">
+	<title>Code</title>
+	<body>
+		<section id="ENF-44J-NDB">
+			<title>codeblock</title>
+			<codeblock outputclass="language-xml">&lt;root>
+  &lt;element attribute="value">
+    text
+  &lt;/element>
+&lt;/root></codeblock>
+		</section>
+		<section id="ANM-S4J-NDB">
+			<title>Hyphenation</title>
+			<table rowsep="1" colsep="1" id="llx_cl1_rx">
+				<tgroup cols="2">
+					<colspec colname="c1" colnum="1" colwidth="1.0*"/>
+					<colspec colname="c2" colnum="2" colwidth="2.5cm"/>
+					<thead>
+						<row id="BZ5-T4J-NDB">
+							<entry>Rule to check (minimal 5 characters)</entry>
+							<entry>Test-Text</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row id="CZ5-T4J-NDB">
+							<entry>After a dot, underscore or @, wenn ein letter of a digit follows</entry>
+							<entry><codeph>VERY_LONG_IDENTIFIER_WITH_UNDERSCORE VERY_LONG_IDENTIFIER_WITH_UNDERSCORE VERY_LONG_IDENTIFIER_WITH_UNDERSCORE</codeph><codeph>
+								VERY.LONG.IDENTIFIER.WITH.DOTS VERY.LONG.IDENTIFIER.WITH.DOTS VERY.LONG.IDENTIFIER.WITH.DOTS</codeph><codeph>VERY@LONG@IDENTIFIER@WITH@ATS VERY@LONG@IDENTIFIER@WITH@ATS
+								VERY@LONG@IDENTIFIER@WITH@ATS</codeph></entry>
+						</row>
+						<row id="DZ5-T4J-NDB">
+							<entry>After at least two lower case letters when a captial letter follows</entry>
+							<entry><codeph>VeryLongIdentifierWithCamelCase VeryLongIdentifierWithCamelCase VeryLongIdentifierWithCamelCase VeryLongIdentifierWithCamelCase</codeph> <codeph>shRt shRt
+								shRt shRt shRt shRt shRt shRt shRt</codeph></entry>
+						</row>
+						<row id="EZ5-T4J-NDB">
+							<entry>After at least wto letters when at least two digits are following</entry>
+							<entry><codeph>Testcase123 Testcase123 Testcase123 Testcase123 Testcase123 Testcase123</codeph> <codeph>Testcase1 Testcase1 Testcase1 Testcase1 Testcase1
+								Testcase1</codeph></entry>
+						</row>
+						<row id="FZ5-T4J-NDB">
+							<entry>After at least two digits when at least two letters are following</entry>
+							<entry><codeph>123Testcase 123Testcase 123Testcase 123Testcase 123Testcase 123Testcase </codeph> <codeph>1Testcase 1Testcase 1Testcase 1Testcase 1Testcase 1Testcase
+								1Testcase</codeph></entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</section>
+	</body>
+</topic>

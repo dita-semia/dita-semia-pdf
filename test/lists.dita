@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topic xmlns:cba="http://www.dita-semia.org/conbat" xmlns:xcr="http://www.dita-semia.org/xslt-conref" xmlns:ikd="http://www.dita-semia.org/implicit-keydef"
+	xmlns:akr="http://www.dita-semia.org/advanced-keyref" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd" id="x3z_5m2_sbz">
+	<title>Lists</title>
+	<body>
+		<section id="FHF-5PJ-NDB">
+			<title>Standard</title>
+			<ul id="BZP-SPJ-NDB">
+				<li id="CZP-SPJ-NDB">Text</li>
+				<li id="N5Y-SPJ-NDB">Text</li>
+				<li id="NWB-TPJ-NDB">Text</li>
+			</ul>
+		</section>
+		<section id="MRG-VPJ-NDB">
+			<title>Compact</title>
+			<ul id="NRG-VPJ-NDB" compact="yes">
+				<li id="ORG-VPJ-NDB">Text</li>
+				<li id="PRG-VPJ-NDB">Text</li>
+				<li id="QRG-VPJ-NDB">Text</li>
+			</ul>
+		</section>
+		<section id="OYG-WPJ-NDB">
+			<title>Nested p</title>
+			<ul id="SYQ-WPJ-NDB">
+				<li id="MSF-YPJ-NDB">
+					<p id="NSF-YPJ-NDB">Text</p>
+					<p id="OSF-YPJ-NDB">Text</p>
+				</li>
+				<li id="TYQ-WPJ-NDB">
+					<p id="EDJ-XPJ-NDB">Text</p>
+					<p id="LMT-XPJ-NDB">Text</p>
+				</li>
+			</ul>
+		</section>
+		<section id="UVV-YPJ-NDB">
+			<title>Nested items</title>
+			<ul id="VVV-YPJ-NDB">
+				<li id="WVV-YPJ-NDB">
+					<p id="XVV-YPJ-NDB">Text</p>
+					<p id="YVV-YPJ-NDB">Text</p>
+					<ul id="NKM-ZPJ-NDB">
+						<li id="MVD-1QJ-NDB">Text</li>
+						<li id="OKM-ZPJ-NDB">Text</li>
+					</ul>
+				</li>
+				<li id="ZVV-YPJ-NDB">
+					<p id="AWV-YPJ-NDB">Text</p>
+					<p id="BWV-YPJ-NDB">Text</p>
+				</li>
+			</ul>
+		</section>
+	</body>
+</topic>

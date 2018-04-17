@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topic xmlns:cba="http://www.dita-semia.org/conbat" xmlns:xcr="http://www.dita-semia.org/xslt-conref" xmlns:ikd="http://www.dita-semia.org/implicit-keydef"
+	xmlns:akr="http://www.dita-semia.org/advanced-keyref" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd" id="x3z_5m2_sbz">
+	<title>Tables</title>
+	<body>
+		<table frame="all" rowsep="1" colsep="1" id="FF2-DQJ-NDB">
+			<tgroup cols="2">
+				<colspec colname="c1" colnum="1" colwidth="1*" align="left"/>
+				<colspec colname="c2" colnum="2" colwidth="1*" align="left"/>
+				<thead>
+					<row id="GF2-DQJ-NDB">
+						<entry>Column1</entry>
+						<entry>Column2</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row id="HF2-DQJ-NDB">
+						<entry>Text</entry>
+						<entry>Text</entry>
+					</row>
+					<row id="IF2-DQJ-NDB">
+						<entry>p</entry>
+						<entry>
+							<p id="OWM-FQJ-NDB">Text</p>
+							<p id="ILQ-FQJ-NDB">Text</p>
+						</entry>
+					</row>
+					<row id="JF2-DQJ-NDB">
+						<entry>list</entry>
+						<entry>
+							<ul id="GGX-FQJ-NDB">
+								<li id="HGX-FQJ-NDB">Text</li>
+								<li id="SNC-GQJ-NDB">Text</li>
+							</ul>
+						</entry>
+					</row>
+					<row id="KF2-DQJ-NDB">
+						<entry>list with p</entry>
+						<entry>
+							<ul id="KQQ-GQJ-NDB">
+								<li id="LQQ-GQJ-NDB">
+									<p id="INR-HQJ-NDB">Text</p>
+									<p id="HDX-HQJ-NDB">Text</p>
+								</li>
+								<li id="YQ1-3QJ-NDB">
+									<p id="EW2-3QJ-NDB">Text</p>
+									<p id="ZH3-3QJ-NDB">Text</p>
+								</li>
+							</ul>
+						</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+	</body>
+</topic>
