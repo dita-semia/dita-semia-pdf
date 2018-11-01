@@ -252,39 +252,38 @@
 				else if (@type = 'caution') then 'Vorsicht'
 				else '???'"/>
 		
-		<fo:table xsl:use-attribute-sets="note__table">
-			<!--<xsl:call-template name="e:profiling"/>-->
-			<fo:table-column xsl:use-attribute-sets="note__image__column"/>
-			<fo:table-column xsl:use-attribute-sets="note__text__column"/>
-			<fo:table-body>
-				<fo:table-row>
-					<fo:table-cell xsl:use-attribute-sets="note__image__entry">
-						<fo:block>
-							<xsl:value-of select="$labelText"/>
-						</fo:block>
-						<fo:block>
-							<fo:external-graphic
-								scaling			= "uniform" 
-								content-width	= "100%"
-								src				= "url('{$customizationDir.url}common/artwork/{@type}.svg')"/>
-						</fo:block>
-					</fo:table-cell>
-					<fo:table-cell xsl:use-attribute-sets="note__text__entry">
-						<xsl:variable name="content" as="node()*">
-							<xsl:apply-templates/>
-						</xsl:variable>
-						<xsl:choose>
-							<xsl:when test="exists($content)">
-								<xsl:sequence select="$content"/>
-							</xsl:when>
-							<xsl:otherwise>
-								<fo:block/>	<!-- avoid empty table-cell element - causes FOP error --> 
-							</xsl:otherwise>
-						</xsl:choose>
-					</fo:table-cell>
-				</fo:table-row>
-			</fo:table-body>
-		</fo:table>
+		<fo:block>
+			<xsl:call-template name="commonattributes"/>
+			<xsl:apply-templates select="*[contains(@class,' ditaot-d/ditaval-startprop ')]" mode="outofline"/>
+			
+			<fo:table xsl:use-attribute-sets="note__table">
+				<!--<xsl:call-template name="e:profiling"/>-->
+				<fo:table-column xsl:use-attribute-sets="note__image__column"/>
+				<fo:table-column xsl:use-attribute-sets="note__text__column"/>
+				<fo:table-body>
+					<fo:table-row>
+						<fo:table-cell xsl:use-attribute-sets="note__image__entry">
+							<fo:block>
+								<xsl:value-of select="$labelText"/>
+							</fo:block>
+							<fo:block>
+								<fo:external-graphic
+									scaling			= "uniform" 
+									content-width	= "100%"
+									src				= "url('{$customizationDir.url}common/artwork/{@type}.svg')"/>
+							</fo:block>
+						</fo:table-cell>
+						<fo:table-cell xsl:use-attribute-sets="note__text__entry">
+							<fo:block>
+								<xsl:apply-templates/>
+							</fo:block>
+						</fo:table-cell>
+					</fo:table-row>
+				</fo:table-body>
+			</fo:table>
+			
+			<xsl:apply-templates select="*[contains(@class,' ditaot-d/ditaval-endprop ')]" mode="outofline"/>
+		</fo:block>
 
 	</xsl:template>
 	
@@ -463,9 +462,10 @@
 	
 	
 	<xsl:template match="*[contains(@class, ' svg-d/svg-container ')]" priority="10">
-		<!-- Padding verhindert einen Rand um die Grafik. font-size="0" funktioniert leider nicht. -->
-		<fo:inline>
+		<fo:inline>	
+			<!-- the fo:inline is required to make sourrounding links work -->
 			<fo:block padding-top="-0.1em" padding-bottom="-0.35em">
+				<!-- negatve padding is required to avoid a gap around the graphic. font-size 0 doesn't work. -->
 				<fo:instream-foreign-object width="100%" content-width="scale-down-to-fit">
 					<xsl:call-template name="commonattributes"/>
 					<xsl:copy-of select="svg:svg"/>
@@ -474,22 +474,9 @@
 		</fo:inline>
 	</xsl:template>
 	
-	<xsl:template match="*[contains(@class, ' svg-d/svg-container ')][contains(parent::*/@class, ' topic/xref ')]" priority="20">
-		<!-- 
-			fo:inline sorgt dafür, dass ein umschließender Link auch funktioniert. Negatives Passing muss außerhalb von dem xref erfolgen
-		-->
-		<fo:inline>
-			<fo:instream-foreign-object width="100%" content-width="scale-down-to-fit">
-				<xsl:call-template name="commonattributes"/>
-				<xsl:copy-of select="svg:svg"/>
-			</fo:instream-foreign-object>
-		</fo:inline>
-	</xsl:template>
 	
 	<xsl:template match="*[contains(@class, ' akr-d/key-xref ')][@outputclass = 'svg']">
-		<fo:block padding-top="-0.1em" padding-bottom="-0.35em">
-			<xsl:next-match/>
-		</fo:block>
+		<xsl:apply-templates select="*"/>
 	</xsl:template>
 	
 	<xsl:template match="processing-instruction('pagebreak')">
@@ -532,6 +519,11 @@
 				</xsl:if>
 				<fo:inline xsl:use-attribute-sets="image__inline">
 					<xsl:call-template name="commonattributes"/>
+					<xsl:if test="@rev = ('dsd:added', 'dsd:deleted')">
+						<xsl:attribute name="border-style" select="'solid'"/>
+						<xsl:attribute name="border-width" select="'2pt'"/>
+						<xsl:attribute name="border-color" select="ditaval-startprop/revprop/@color"/>
+					</xsl:if>
 					<xsl:apply-templates select="." mode="placeImage">
 						<xsl:with-param name="imageAlign" select="@align"/>
 						<xsl:with-param name="href" select="if (@scope = 'external' or opentopic-func:isAbsolute(@href)) then @href else concat($input.dir.url, @href)"/>
@@ -547,4 +539,51 @@
 		<xsl:apply-templates select="*[contains(@class,' ditaot-d/ditaval-endprop ')]" mode="outofline"/>
 	</xsl:template>
 
+
+	<xsl:template match="*[contains(@class,' topic/draft-comment ')]">
+		<xsl:if test="($publishRequiredCleanup = 'yes') or ($DRAFT = 'yes')">
+			<fo:block xsl:use-attribute-sets="draft-comment">
+				<xsl:call-template name="commonattributes"/>
+				<xsl:if test="@disposition | @status">
+					<fo:block xsl:use-attribute-sets="draft-comment__label">
+						<xsl:text>Disposition: </xsl:text>
+						<xsl:value-of select="@disposition"/>
+						<xsl:text> / </xsl:text>
+						<xsl:text>Status: </xsl:text>
+						<xsl:value-of select="@status"/>
+					</fo:block>
+				</xsl:if>
+				<xsl:apply-templates/>
+			</fo:block>
+		</xsl:if>
+	</xsl:template>
+
+	<!-- support flagging -->
+	<xsl:template match="*[contains(@class,' topic/body ')]">
+		<xsl:variable name="level" as="xs:integer">
+			<xsl:apply-templates select="." mode="get-topic-level"/>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="not(node())"/>
+			<xsl:when test="$level = 1">
+				<fo:block xsl:use-attribute-sets="body__toplevel">
+					<xsl:apply-templates select="*[contains(@class,' ditaot-d/ditaval-startprop ')]" mode="flag-attributes"/>
+					<xsl:apply-templates/>
+				</fo:block>
+			</xsl:when>
+			<xsl:when test="$level = 2">
+				<fo:block xsl:use-attribute-sets="body__secondLevel">
+					<xsl:apply-templates select="*[contains(@class,' ditaot-d/ditaval-startprop ')]" mode="flag-attributes"/>
+					<xsl:apply-templates/>
+				</fo:block>
+			</xsl:when>
+			<xsl:otherwise>
+				<fo:block xsl:use-attribute-sets="body">
+					<xsl:apply-templates select="*[contains(@class,' ditaot-d/ditaval-startprop ')]" mode="flag-attributes"/>
+					<xsl:apply-templates/>
+				</fo:block>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+	
 </xsl:stylesheet>

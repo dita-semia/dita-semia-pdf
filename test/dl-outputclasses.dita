@@ -182,7 +182,7 @@
 					<dt>root</dt>
 					<dd>Description of root</dd>
 					<dlentry id="tree-child1">
-						<dt>child1xxx</dt>
+						<dt>child</dt>
 						<dd>Description of 1st child</dd>
 						<dlentry>
 							<dt>sub-child1</dt>
@@ -203,9 +203,13 @@
 						<dt>child2</dt>
 						<dd>Description of 2nd child</dd>
 					</dlentry>
-					<dlentry>
-						<dt>child 3 with a very long definition term with plenty of text text text text text text </dt>
+					<dlentry id="JXY-G5V-QFB">
+						<dt>child 3 with a very long definition term ut without description</dt>
 						<dd/>
+					</dlentry>
+					<dlentry>
+						<dt>child 4 with a very long definition term ut without description</dt>
+						<dd>Description of 4th child</dd>
 					</dlentry>
 				</dlentry>
 			</dl>

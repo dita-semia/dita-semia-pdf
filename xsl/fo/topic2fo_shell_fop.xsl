@@ -16,6 +16,7 @@
 	<!--base imports-->
 	<xsl:import href="plugin:org.dita-semia.pdf:xsl/fo/class.xsl"/>
 	<xsl:import href="plugin:org.dita-semia.pdf:xsl/common/CodeHyph.xsl"/>
+	<xsl:import href="plugin:org.dita-semia.pdf:xsl/common/versionText.xsl"/>
 	<xsl:import href="plugin:org.dita.base:xsl/common/dita-utilities.xsl"/>
 	<xsl:import href="plugin:org.dita.base:xsl/common/dita-textonly.xsl"/>
 	<xsl:import href="plugin:org.dita.base:xsl/common/related-links.xsl"/>
@@ -50,6 +51,7 @@
 	<xsl:import href="plugin:org.dita-semia.pdf:cfg/fo/attrs/toc-attr.xsl"/>
 	<xsl:import href="plugin:org.dita.pdf2:xsl/fo/toc.xsl"/>
 	<xsl:import href="plugin:org.dita-semia.pdf:xsl/fo/toc.xsl"/>
+	<xsl:import href="plugin:org.dita-semia.pdf:xsl/fo/changed.xsl"/>
 	<xsl:import href="plugin:org.dita.pdf2:xsl/fo/bookmarks.xsl"/>
 	<xsl:import href="plugin:org.dita-semia.pdf:xsl/fo/bookmarks.xsl"/>
 	<xsl:import href="plugin:org.dita.pdf2:cfg/fo/attrs/index-attr.xsl"/>
@@ -103,7 +105,6 @@
 
 	<!-- DITA-SEMIA resolver -->
 	<xsl:import href="plugin:org.dita-semia.resolver:xsl/fo/dl-outputclasses.xsl"/>
-	<xsl:import href="plugin:org.dita-semia.resolver:xsl/fo/advanced-keyref.xsl"/>
 	
 	<!--formatter specific imports-->
 	<xsl:import href="plugin:org.dita.pdf2.fop:cfg/fo/attrs/commons-attr_fop.xsl"/>
@@ -118,6 +119,8 @@
 	<xsl:import href="plugin:org.dita-semia.pdf:cfg/fo/attrs/commons-attr.xsl"/>
 	<xsl:import href="plugin:org.dita-semia.pdf:xsl/fo/tables.xsl"/>
 	<xsl:import href="plugin:org.dita-semia.pdf:xsl/fo/dl-outputclasses.xsl"/>
+	<xsl:import href="plugin:org.dita-semia.pdf:cfg/fo/attrs/status-marker-attr.xsl"/>
+	<xsl:import href="plugin:org.dita-semia.pdf:xsl/fo/status-marker.xsl"/>
 	
 	<!--parameters-->
 	

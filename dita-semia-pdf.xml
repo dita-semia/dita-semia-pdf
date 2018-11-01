@@ -10,6 +10,7 @@
 		<property name="args.chapter.layout" 		value="BASIC"/>
 		<property name="args.bookmark.style" 		value="COLLAPSED"/>
 		<property name="args.rellinks" 				value="none"/>
+		<property name="args.rellinks" 				value="include.rellinks"/>
 	</target>
 
 	<target name="dita2dita-semia-pdf" depends="dita2dita-semia-pdf.init, dita2pdf2"/>

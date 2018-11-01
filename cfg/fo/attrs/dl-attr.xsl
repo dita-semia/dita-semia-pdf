@@ -36,5 +36,12 @@
 		<xsl:sequence select="max($labels)"/>
 	</xsl:template>
 	
+	
+	<xsl:attribute-set name="ds:dlhead-tree" use-attribute-sets="ds:dlentry-tree">
+		<xsl:attribute name="font-weight"		>bold</xsl:attribute>
+		<xsl:attribute name="background-color"	>rgb(192,192,192)</xsl:attribute>
+		<xsl:attribute name="font-size"			>12pt</xsl:attribute>
+	</xsl:attribute-set>
+	
 
 </xsl:stylesheet>

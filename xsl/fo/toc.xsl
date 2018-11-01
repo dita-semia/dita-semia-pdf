@@ -24,7 +24,9 @@
 				<xsl:when test="$mapTopicref[@toc = 'yes' or not(@toc)] or (not($mapTopicref) and $include = 'true')">
 					
 					<xsl:variable name="navTitle">
-						<xsl:call-template name="getNavTitle"/>
+						<xsl:call-template name="getNavTitle">
+							<xsl:with-param name="noStatusMarker" select="true()" tunnel="yes"/>
+						</xsl:call-template>
 					</xsl:variable>
 					
 					<xsl:variable name="navTitleNum" 	as="node()*" select="$navTitle/fo:table/fo:table-body/fo:table-row/fo:table-cell[1]/fo:block/node()"/>
@@ -140,6 +142,12 @@
 									<fo:inline xsl:use-attribute-sets="__toc__title">
 										<xsl:value-of select="normalize-space(string-join($navTitleTxt, ''))"/>
 									</fo:inline>
+									<xsl:if test="@status">
+										<xsl:call-template name="StatusMarker">
+											<xsl:with-param name="prefix"			select="' ('"/>
+											<xsl:with-param name="suffix"			select="')'"/>
+										</xsl:call-template>
+									</xsl:if>
 									<fo:inline font-size="{$fontSizePage}pt" xsl:use-attribute-sets="__toc__page-number">
 										<fo:leader xsl:use-attribute-sets="__toc__leader"/>
 										<fo:page-number-citation ref-id="{$destId}"/>
@@ -190,13 +198,13 @@
 		<xsl:param name="isLeaf" as="xs:boolean"/>
 		
 		<xsl:variable name="refContent" as="element()*" select="if ($isLeaf) then *[not(contains(@class,' topic/title '))] else *[contains(@class,' topic/body ')]"/>
-
-		<xsl:variable name="ditavalStartprop" as="element()*" select="*[contains(@class,' ditaot-d/ditaval-startprop ')]"/>
+		
+		<xsl:variable name="ditavalStartprop" as="element()*" select="ancestor-or-self::*/*[contains(@class,' ditaot-d/ditaval-startprop ')][1]"/>
 		<xsl:choose>
 			<xsl:when test="exists($ditavalStartprop)">
 				<xsl:apply-templates select="$ditavalStartprop" mode="flag-attributes"/>
 			</xsl:when>
-			<xsl:when test="exists($refContent/descendant-or-self::*[starts-with(@rev, 'dsd:')])">
+			<xsl:when test="exists($refContent[ds:containsRelevantChange(.)])">
 				<xsl:apply-templates select="$ds:changedDitavalStartprop" mode="flag-attributes"/>
 			</xsl:when>
 		</xsl:choose>

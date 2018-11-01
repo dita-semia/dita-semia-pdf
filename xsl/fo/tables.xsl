@@ -120,7 +120,7 @@
 						<xsl:sequence select="$content"/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text>&#xA0;</xsl:text>
+						<!--<xsl:text>&#xA0;</xsl:text>-->
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:otherwise>

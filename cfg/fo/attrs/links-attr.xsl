@@ -11,6 +11,12 @@
 	
 	<xsl:attribute-set name="xref" use-attribute-sets="common.link">
 		<xsl:attribute name="color">inherit</xsl:attribute>
+		<xsl:attribute name="font-style">
+			<xsl:choose>
+				<xsl:when test="@outputclass = 'advanced-keyref'">inherit</xsl:when>
+				<xsl:otherwise>italic</xsl:otherwise>
+			</xsl:choose>
+		</xsl:attribute>
 	</xsl:attribute-set>
 
 </xsl:stylesheet>

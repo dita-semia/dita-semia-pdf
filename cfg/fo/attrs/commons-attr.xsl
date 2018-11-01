@@ -220,5 +220,24 @@
 		<xsl:attribute name="border" select="if (@outputclass = 'frame') then 'solid black 1pt' else 'none'"/>
 	</xsl:attribute-set>
 	
+	<xsl:attribute-set name="draft-comment" use-attribute-sets="common.border">
+		<xsl:attribute name="background-color"		>#FF9999</xsl:attribute>
+		<xsl:attribute name="color"					>inherit</xsl:attribute>
+		<xsl:attribute name="border-start-color"	>#FF7777</xsl:attribute>
+		<xsl:attribute name="border-end-color"		>#FF7777</xsl:attribute>
+		<xsl:attribute name="border-start-width"	>1mm</xsl:attribute>
+		<xsl:attribute name="border-end-width"		>1mm</xsl:attribute>
+		<xsl:attribute name="border-before-style"	>none</xsl:attribute>
+		<xsl:attribute name="border-after-style"	>none</xsl:attribute>
+		<xsl:attribute name="border-start-style"	>solid</xsl:attribute>
+		<xsl:attribute name="border-end-style"		>solid</xsl:attribute>
+		<xsl:attribute name="padding-before"		>0.1mm</xsl:attribute>
+		<xsl:attribute name="padding-after"			>0.1mm</xsl:attribute>
+		<xsl:attribute name="padding-start"			>1mm</xsl:attribute>
+		<xsl:attribute name="padding-end"			>1mm</xsl:attribute>
+		<xsl:attribute name="margin-left"			>0.1mm</xsl:attribute>
+		<xsl:attribute name="margin-right"			>0.1mm</xsl:attribute>
+		
+	</xsl:attribute-set>
 	
 </xsl:stylesheet>

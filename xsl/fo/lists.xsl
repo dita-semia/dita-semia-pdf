@@ -14,6 +14,7 @@
 	<xsl:template match="*[contains(@class, ' topic/ul ')]/*[contains(@class, ' topic/li ')]">
 		
 		<fo:list-item xsl:use-attribute-sets="ul.li">
+			<xsl:apply-templates select="*[contains(@class,' ditaot-d/ditaval-startprop ')]" mode="flag-attributes"/>
 			<!--<xsl:call-template name="e:compactSpacing"/>-->
 			<xsl:call-template name="ds:listItemOrphanWidows"/>
 			<fo:list-item-label xsl:use-attribute-sets="ul.li__label">
@@ -43,6 +44,7 @@
 		</xsl:variable>
 		
 		<fo:list-item xsl:use-attribute-sets="ol.li">
+			<xsl:apply-templates select="*[contains(@class,' ditaot-d/ditaval-startprop ')]" mode="flag-attributes"/>
 			<!--<xsl:call-template name="e:compactSpacing"/>-->
 			<xsl:call-template name="ds:listItemOrphanWidows"/>
 			<fo:list-item-label xsl:use-attribute-sets="ol.li__label">
@@ -80,6 +82,7 @@
 
 		<fo:list-item xsl:use-attribute-sets="sl.sli">
 			<xsl:call-template name="ds:listItemOrphanWidows"/>
+			<xsl:apply-templates select="*[contains(@class,' ditaot-d/ditaval-startprop ')]" mode="flag-attributes"/>
 			<fo:list-item-label xsl:use-attribute-sets="sl.sli__label">
 				<fo:block xsl:use-attribute-sets="sl.sli__label__content">
 					<xsl:call-template name="commonattributes"/>
